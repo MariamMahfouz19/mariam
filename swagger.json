@@ -1,0 +1,110 @@
+{
+	"openapi": "3.0.n",
+	"info":{
+		"description": "This is a simple example NodeJS API project to demonstrate Swagger Documentation" ,
+		
+		"title": "Project"
+
+	},
+	"schemes": ["localhost"],
+    "host": "localhost:3000",
+	"basePath": "/users",
+	"paths":{
+		"/signup":{
+			"post":{
+				"summary" : "create users",
+				"description":"use to singn up some information",
+				"produces":"application/json",
+				
+				"requestBody":{
+				    "description":"create user object",
+					"content":{
+						"application/json":{
+							"schema":{"$ref":"#/component/schemas/user"}
+						}
+					}
+				},
+				"responses":{
+					"default":{
+						"description":"successful operation",
+						"content":{
+							"application/json":{
+								"schema":{"$ref":"#/component/schemas/user"}
+							}
+						}
+				
+				    }
+					
+				}
+			}
+		},
+		"/signin":{
+				"get":{
+					"summary" : "Logs user into the system",
+                    "parameters":[
+						{
+							"name":"userName",
+							"in":"query",
+							"schema":{"type":"String"}
+						},
+						{
+							"name":"Password",
+							"in":"query",
+							"schema":{"type":"String"}
+						}
+					],
+					"responses":{
+						"200":{
+							"description":"successful operation"
+						},
+						"400":{
+							"description":"Invalid username/password"
+						}
+					}
+					
+			    }
+		
+	    }
+
+    },
+	"component":{
+		"schemas":{
+			"user":{
+				"type":"object",
+				"properties":{
+					"userName":{
+						"type": "String",
+						"example":"the user"
+					},
+					"firstName":{
+						"type": "String",
+						"example":"osama"
+					},
+					"lastName":{
+						"type": "String",
+						"example":"ibrahim"
+					},
+					"Password":{
+						"type": "String",
+						"example":"123456"
+					},
+					"email":{
+						"type": "String",
+						"example":"osama@email.com"
+					},
+					"phone":{
+						"type": "Number",
+						"example":"the user"
+					}
+					
+				}
+			}
+		}
+	}
+
+    
+
+
+
+
+}
